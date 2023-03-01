@@ -2,11 +2,25 @@ package com.knauer.dscommerce.dto;
 
 import com.knauer.dscommerce.entities.Product;
 
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Positive;
+import jakarta.validation.constraints.Size;
+
 public class ProductDTO {
 
 	private Long id;
+	
+	@NotBlank(message = "Nome não pode estar em branco")
+	@Size(min = 3, max = 80, message = "Nome precisa ter de 3 a 80 caracteres")
 	private String name;
+	
+	@NotBlank(message = "Nome não pode estar em branco")
+	@Size(min = 10, message = "Descrição precisa ter no minimo 10 caracteres")
 	private String description;
+	
+	@NotNull(message = "Valor não pode ser nulo")
+	@Positive(message = "O preço precisa ser positivo")
 	private Double price;
 	private String imgUrl;
 
