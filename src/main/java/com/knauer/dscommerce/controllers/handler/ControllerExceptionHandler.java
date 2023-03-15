@@ -13,7 +13,7 @@ import com.knauer.dscommerce.dto.ValidationError;
 import com.knauer.dscommerce.service.exceptions.IntegrityViolationException;
 import com.knauer.dscommerce.service.exceptions.ResourceNotFoundException;
 
-import jakarta.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletRequest;
 
 @ControllerAdvice
 public class ControllerExceptionHandler {

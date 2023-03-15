@@ -15,7 +15,7 @@ import com.knauer.dscommerce.repositories.ProductRepository;
 import com.knauer.dscommerce.service.exceptions.IntegrityViolationException;
 import com.knauer.dscommerce.service.exceptions.ResourceNotFoundException;
 
-import jakarta.persistence.EntityNotFoundException;
+import javax.persistence.EntityNotFoundException;
 
 @Service
 public class ProductService {
@@ -30,8 +30,8 @@ public class ProductService {
 	}
 
 	@Transactional(readOnly = true)
-	public Page<ProductDTO> findAll(Pageable pageable) {
-		Page<Product> entities = repository.findAll(pageable);
+	public Page<ProductDTO> findAll(String name, Pageable pageable) {
+		Page<Product> entities = repository.searchByName(name, pageable);
 		
 		return entities.map(dto -> new ProductDTO(dto));
 	}
