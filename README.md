@@ -1,2 +1,2 @@
 # Dscommerce
-Projeto de uma pagina de vendas
+Projeto backend de uma pagina de vendas
