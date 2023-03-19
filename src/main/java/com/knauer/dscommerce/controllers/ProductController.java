@@ -2,6 +2,8 @@ package com.knauer.dscommerce.controllers;
 
 import java.net.URI;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -19,9 +21,8 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.knauer.dscommerce.dto.ProductDTO;
+import com.knauer.dscommerce.dto.ProductMinDTO;
 import com.knauer.dscommerce.service.ProductService;
-
-import javax.validation.Valid;
 
 @RestController
 @RequestMapping("/products")
@@ -36,7 +37,7 @@ public class ProductController {
 	}
 
 	@GetMapping
-	public ResponseEntity<Page<ProductDTO>> findAll(@RequestParam(defaultValue = "") String name, Pageable pageable) {
+	public ResponseEntity<Page<ProductMinDTO>> findAll(@RequestParam(defaultValue = "") String name, Pageable pageable) {
 		return ResponseEntity.ok(service.findAll(name, pageable));
 	}
 

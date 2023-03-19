@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.knauer.dscommerce.dto.ProductDTO;
+import com.knauer.dscommerce.dto.ProductMinDTO;
 import com.knauer.dscommerce.entities.Product;
 import com.knauer.dscommerce.repositories.ProductRepository;
 import com.knauer.dscommerce.service.exceptions.IntegrityViolationException;
@@ -30,10 +31,10 @@ public class ProductService {
 	}
 
 	@Transactional(readOnly = true)
-	public Page<ProductDTO> findAll(String name, Pageable pageable) {
-		Page<Product> entities = repository.searchByName(name, pageable);
+	public Page<ProductMinDTO> findAll(String name, Pageable pageable) {
+		Page<ProductMinDTO> entities = repository.searchByName(name, pageable);
 		
-		return entities.map(dto -> new ProductDTO(dto));
+		return entities;
 	}
 	
 	@Transactional
