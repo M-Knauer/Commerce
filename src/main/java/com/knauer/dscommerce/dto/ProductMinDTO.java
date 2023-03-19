@@ -1,5 +1,7 @@
 package com.knauer.dscommerce.dto;
 
+import com.knauer.dscommerce.entities.Product;
+
 public class ProductMinDTO {
 
 	private Long id;
@@ -12,6 +14,13 @@ public class ProductMinDTO {
 		this.name = name;
 		this.price = price;
 		this.imgUrl = imgUrl;
+	}
+	
+	public ProductMinDTO(Product entity) {
+		id = entity.getId();
+		name = entity.getName();
+		price = entity.getPrice();
+		imgUrl = entity.getImgUrl();
 	}
 
 	public Long getId() {

@@ -32,9 +32,9 @@ public class ProductService {
 
 	@Transactional(readOnly = true)
 	public Page<ProductMinDTO> findAll(String name, Pageable pageable) {
-		Page<ProductMinDTO> entities = repository.searchByName(name, pageable);
+		Page<Product> entities = repository.searchByName(name, pageable);
 		
-		return entities;
+		return entities.map(dto -> new ProductMinDTO(dto));
 	}
 	
 	@Transactional
