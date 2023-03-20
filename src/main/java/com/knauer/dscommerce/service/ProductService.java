@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.knauer.dscommerce.dto.ProductDTO;
 import com.knauer.dscommerce.dto.ProductMinDTO;
+import com.knauer.dscommerce.entities.Category;
 import com.knauer.dscommerce.entities.Product;
 import com.knauer.dscommerce.repositories.ProductRepository;
 import com.knauer.dscommerce.service.exceptions.IntegrityViolationException;
@@ -65,6 +66,13 @@ public class ProductService {
 		entity.setDescription(dto.getDescription());
 		entity.setImgUrl(dto.getImgUrl());
 		entity.setPrice(dto.getPrice());
+		
+		entity.getCategories().clear();
+		dto.getCategories().forEach(catDto -> {
+			Category cat = new Category();
+			cat.setId(catDto.getId());
+			entity.getCategories().add(cat);
+		});
 	}
 
 	@Transactional(propagation = Propagation.SUPPORTS)
